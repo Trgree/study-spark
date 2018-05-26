@@ -1,0 +1,5 @@
+name,age,sex,deptId
+haha,23,男,1
+hee,12,女,1
+baibai,22,女,2
+wow,24,女,2
