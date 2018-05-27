@@ -12,8 +12,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hadoop.version>2.6.0</hadoop.version>
-        <spark.version>2.1.0</spark.version>
+        <spark.version>2.3.0</spark.version>
         <spark.scala.version>2.11</spark.scala.version>
+        <spark.deps.scope>compile</spark.deps.scope> <!--compile provided runtime system test-->
+        <hadoop.deps.scope>compile</hadoop.deps.scope>
+        <scala.deps.scope>compile</scala.deps.scope>
     </properties>
 
     <dependencies>
@@ -21,33 +24,60 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${spark.scala.version}</artifactId>
             <version>${spark.version}</version>
-            <!--<scope>provided</scope>&lt;!&ndash;表示这依赖由环境提供，打包时使用，若idea运行需要注释掉&ndash;&gt;-->
+            <scope>${spark.deps.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_${spark.scala.version}</artifactId>
             <version>${spark.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${spark.deps.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_${spark.scala.version}</artifactId>
             <version>${spark.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${spark.deps.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>${spark.deps.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming_${spark.scala.version}</artifactId>
             <version>${spark.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${spark.deps.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${hadoop.deps.scope}</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.scopt</groupId>
+            <artifactId>scopt_${spark.scala.version}</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-10_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>${hadoop.deps.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql-kafka-0-10_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>${hadoop.deps.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
